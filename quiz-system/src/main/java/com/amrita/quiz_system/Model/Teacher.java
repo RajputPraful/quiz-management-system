@@ -7,12 +7,14 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 
-// Teacher.java
-@Entity @Data
+@Entity
+@Data
 public class Teacher {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String password;
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Move annotations here
+
     private String name;
-    private String tchrID;
+    private String tchrid;
+    private String password; // Remove annotations from here
 }

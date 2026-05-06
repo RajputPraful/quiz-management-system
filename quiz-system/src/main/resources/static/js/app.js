@@ -186,7 +186,7 @@ async function initStudentDashboard() {
     const id = sessionStorage.getItem('studentId');
     if (name) document.getElementById('student-name-label').textContent = `👤 ${name} (${id})`;
 
-    const response = await fetch(`${API_BASE_URL}/quizzes/all`);
+    const response = await fetch(`${API_BASE_URL}/quizzes/list`);
     const quizzes = await response.json();
     const container = document.getElementById('quiz-list-container');
 

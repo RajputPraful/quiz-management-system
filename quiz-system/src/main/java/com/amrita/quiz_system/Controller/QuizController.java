@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/quizzes")
-@CrossOrigin("*") // Crucial for connecting your frontend later
+@CrossOrigin("*")
 public class QuizController {
 
     @Autowired
@@ -18,19 +18,25 @@ public class QuizController {
     @Autowired
     private QuizService quizService;
 
-    // Teacher behavior: "Teachers to create quizzes"
+    // 1. GET ALL QUIZZES (Added this to fix the 400/Whitelabel error)
+    @GetMapping("/list")
+    public List<Quiz> getAllQuizzes() {
+        return quizRepository.findAll();
+    }
+
+    // 2. Teacher behavior: "Teachers to create quizzes"
     @PostMapping("/create")
     public Quiz createQuiz(@RequestBody Quiz quiz) {
         return quizRepository.save(quiz);
     }
 
-    // Student behavior: "Students to attempt quizzes"
+    // 3. Student behavior: "Get specific quiz details"
     @GetMapping("/{id}")
     public Quiz getQuiz(@PathVariable Long id) {
         return quizRepository.findById(id).orElseThrow();
     }
 
-    // Evaluation: "Automatic evaluation of scores"
+    // 4. Evaluation: "Automatic evaluation of scores"
     @PostMapping("/{id}/submit")
     public Result submitQuiz(@PathVariable Long id,
                              @RequestParam String studentName,
@@ -38,7 +44,7 @@ public class QuizController {
         return quizService.evaluateQuiz(id, studentName, answers);
     }
 
-    // Teacher behavior: "viewAllResult() which shows result of all students"
+    // 5. Teacher behavior: "viewAllResult()"
     @GetMapping("/{id}/results")
     public List<Result> getQuizResults(@PathVariable Long id) {
         Quiz quiz = quizRepository.findById(id).orElseThrow();

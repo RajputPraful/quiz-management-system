@@ -8,5 +8,5 @@ import java.util.Optional;
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
     // Supports the teacher's responsibility to manage quiz content [cite: 83]
-    Optional<Teacher> findByTchrID(String tchrID);
+    Optional<Teacher> findByTchrid(String tchrid); // Matches the field name in Teacher.java
 }

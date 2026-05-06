@@ -31,7 +31,7 @@ public class AuthController {
 
     @PostMapping("/login/teacher")
     public ResponseEntity<?> loginTeacher(@RequestBody LoginRequest request) {
-        Optional<Teacher> teacher = teacherRepo.findByTchrID(request.getId());
+        Optional<Teacher> teacher = teacherRepo.findByTchrid(request.getId());
         if (teacher.isPresent() && teacher.get().getPassword().equals(request.getPassword())) {
             return ResponseEntity.ok(teacher.get()); // Return teacher details
         }
