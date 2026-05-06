@@ -17,17 +17,22 @@
         <form id="teacher-login-form" onsubmit="teacherLogin(event)">
             <input type="text"
                    id="teacher-name"
-                   placeholder="Teacher Name (e.g. Dr. Priya Nair)"
+                   placeholder="Teacher Name"
                    autocomplete="name"
                    required>
             <input type="text"
                    id="teacher-id"
-                   placeholder="Teacher ID (e.g. TCH2024001)"
+                   placeholder="Teacher ID"
                    autocomplete="off"
                    required>
+            <!-- Added password field to match backend requirements -->
+            <input type="password"
+                   id="teacher-password"
+                   placeholder="Password"
+                   required>
 
-            <div class="error-msg" id="login-error">
-                ❌ Please enter both your name and Teacher ID.
+            <div class="error-msg" id="login-error" style="display:none;">
+                ❌ Invalid Teacher ID or Password.
             </div>
 
             <button type="submit" class="btn-teacher-login">Login →</button>

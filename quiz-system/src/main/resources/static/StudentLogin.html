@@ -17,18 +17,25 @@
         <form id="student-login-form" onsubmit="studentLogin(event)">
             <input type="text"
                    id="student-name"
-                   placeholder="Full Name (e.g. Ashan Kumar)"
+                   placeholder="Full Name"
+                   required
                    autocomplete="name">
             <input type="text"
                    id="student-id"
-                   placeholder="Student ID (e.g. STU2024001)"
+                   placeholder="Student ID (Roll No)"
+                   required
                    autocomplete="off">
+            <!-- Added password field to match backend security -->
+            <input type="password"
+                   id="student-password"
+                   placeholder="Password"
+                   required>
 
-            <div class="error-msg" id="login-error">
-                ❌ Please enter both your name and Student ID.
+            <div class="error-msg" id="login-error" style="display:none;">
+                ❌ Invalid Credentials. Please try again.
             </div>
-            <div class="info-msg" id="no-quiz-msg">
-                ⚠️ No quiz has been created yet. Please wait for your teacher to set one up.
+            <div class="info-msg" id="no-quiz-msg" style="display:none;">
+                ⚠️ No quiz has been created yet. Please wait for your teacher.
             </div>
 
             <button type="submit" class="btn-student-login">Start Quiz →</button>
