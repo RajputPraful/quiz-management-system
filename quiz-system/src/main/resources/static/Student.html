@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Quiz — Amrita Quiz</title>
+    <link rel="stylesheet" href="codestyle.css">
+</head>
+<body>
+
+<!-- ── Sticky Header ── -->
+<header class="dashboard-header">
+    <h2>Student Quiz</h2>
+    <div class="header-right">
+        <span id="student-name-label" class="header-user-label"></span>
+        <button type="button" class="btn-logout" onclick="logoutStudent()">Logout</button>
+    </div>
+</header>
+
+<!-- ── Main Content ── -->
+<div class="dashboard-container">
+
+    <!-- Quiz questions rendered dynamically by app.js -->
+    <form id="quiz-form" onsubmit="submitQuiz(event)"></form>
+
+    <!-- Score result panel — hidden until submission -->
+    <div id="result-panel" class="quiz-card">
+        <h2 id="result-title"></h2>
+        <p id="result-detail"></p>
+        <br>
+        <button type="button"
+                class="btn-submit btn-back"
+                onclick="goTo('QuizLogin.html')">
+            ← Back to Home
+        </button>
+    </div>
+
+    <br>
+    <button type="button"
+            id="back-btn"
+            class="btn-submit btn-back"
+            onclick="goTo('QuizLogin.html')">
+        ← Back to Home
+    </button>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+    initStudentPage();
+</script>
+
+</body>
+</html>

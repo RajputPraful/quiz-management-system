@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login — Amrita Quiz</title>
+    <link rel="stylesheet" href="codestyle.css">
+</head>
+<body>
+
+<div class="auth-container teacher-bg">
+    <div class="auth-box teacher-box">
+        <span class="auth-icon">👩‍🏫</span>
+        <h2>Teacher Login</h2>
+        <p class="subtitle">Enter your credentials to manage quizzes.</p>
+
+        <form id="teacher-login-form" onsubmit="teacherLogin(event)">
+            <input type="text"
+                   id="teacher-name"
+                   placeholder="Teacher Name (e.g. Dr. Priya Nair)"
+                   autocomplete="name"
+                   required>
+            <input type="text"
+                   id="teacher-id"
+                   placeholder="Teacher ID (e.g. TCH2024001)"
+                   autocomplete="off"
+                   required>
+
+            <div class="error-msg" id="login-error">
+                ❌ Please enter both your name and Teacher ID.
+            </div>
+
+            <button type="submit" class="btn-teacher-login">Login →</button>
+        </form>
+
+        <button class="back-link teacher-link"
+                type="button"
+                onclick="goTo('QuizLogin.html')">
+            ← Back to Role Selection
+        </button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

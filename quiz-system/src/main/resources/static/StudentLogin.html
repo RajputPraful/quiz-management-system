@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login — Amrita Quiz</title>
+    <link rel="stylesheet" href="codestyle.css">
+</head>
+<body>
+
+<div class="auth-container student-bg">
+    <div class="auth-box student-box">
+        <span class="auth-icon">📚</span>
+        <h2>Student Login</h2>
+        <p class="subtitle">Enter your details to attend the quiz.</p>
+
+        <form id="student-login-form" onsubmit="studentLogin(event)">
+            <input type="text"
+                   id="student-name"
+                   placeholder="Full Name (e.g. Ashan Kumar)"
+                   autocomplete="name">
+            <input type="text"
+                   id="student-id"
+                   placeholder="Student ID (e.g. STU2024001)"
+                   autocomplete="off">
+
+            <div class="error-msg" id="login-error">
+                ❌ Please enter both your name and Student ID.
+            </div>
+            <div class="info-msg" id="no-quiz-msg">
+                ⚠️ No quiz has been created yet. Please wait for your teacher to set one up.
+            </div>
+
+            <button type="submit" class="btn-student-login">Start Quiz →</button>
+        </form>
+
+        <button class="back-link student-link"
+                type="button"
+                onclick="goTo('QuizLogin.html')">
+            ← Back to Role Selection
+        </button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

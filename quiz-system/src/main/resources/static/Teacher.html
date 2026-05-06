@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard — Amrita Quiz</title>
+    <link rel="stylesheet" href="codestyle.css">
+</head>
+<body>
+
+<!-- ── Sticky Header ── -->
+<header class="dashboard-header">
+    <h2>
+        Teacher Panel
+        <span id="q-count-badge" class="question-count-badge">0 Questions</span>
+    </h2>
+    <div class="header-right">
+        <span id="teacher-id-label" class="header-user-label"></span>
+        <button type="button" class="btn-logout" onclick="logoutTeacher()">Logout</button>
+    </div>
+</header>
+
+<!-- ── Main Content ── -->
+<div class="dashboard-container">
+
+    <form id="quiz-form" onsubmit="saveQuizAndRedirect(event)">
+
+        <!-- Question cards injected here by app.js -->
+        <div id="questions-wrapper"></div>
+
+        <!-- Add / Submit row -->
+        <div class="form-actions">
+            <button type="button"
+                    class="btn-add-question"
+                    onclick="addQuestion()">
+                + Add Question
+            </button>
+            <button type="submit" class="btn-submit">
+                ✓ Publish Quiz
+            </button>
+        </div>
+
+    </form>
+
+    <br>
+    <button type="button"
+            class="btn-submit btn-back"
+            onclick="goTo('QuizLogin.html')">
+        ← Back to Home
+    </button>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+    initTeacherPage();
+</script>
+
+</body>
+</html>
