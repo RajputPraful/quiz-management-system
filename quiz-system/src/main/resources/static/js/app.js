@@ -3,8 +3,7 @@
    Amrita Online Quiz Management System (2026)
    ============================================================ */
 
-const API_BASE_URL = 'http://localhost:8080/api';
-
+const API_BASE_URL = window.location.origin + '/api';
 /* ─────────────────────────────────────────
    1. NAVIGATION & SESSION UTILS
    ───────────────────────────────────────── */
