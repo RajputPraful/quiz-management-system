@@ -9,7 +9,7 @@ const API_BASE_URL = window.location.origin + '/api';
    ───────────────────────────────────────── */
 
 function goTo(page) {
-    window.location.href = page;
+    window.location.href = "/";
 }
 
 /**
