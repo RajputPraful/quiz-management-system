@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal — Amrita Quiz</title>
+    <link rel="stylesheet" href="css/codestyle.css">
+</head>
+<body>
+
+<!-- ── Sticky Header ── -->
+<header class="dashboard-header">
+    <div class="header-left">
+        <h2>Student Portal</h2>
+    </div>
+    <div class="header-right">
+        <!-- Displayed from sessionStorage via app.js -->
+        <span id="student-name-label" class="header-user-label"></span>
+        <button type="button" class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+</header>
+
+<!-- ── Main Content ── -->
+<div class="dashboard-container">
+
+    <!-- Section 1: Quiz Selection (Shown on Page Load) -->
+    <div id="quiz-selection-section">
+        <div class="section-header">
+            <h3>Available Quizzes</h3>
+            <p>Select a quiz to begin your attempt.</p>
+        </div>
+        <div id="quiz-list-container" class="role-cards">
+            <!-- Quizzes from Database will be injected here as cards -->
+        </div>
+    </div>
+
+    <!-- Section 2: Active Quiz (Hidden until 'Start Quiz' is clicked) -->
+    <div id="active-quiz-section" style="display:none;">
+        <form id="quiz-form" onsubmit="submitQuiz(event)">
+            <!-- Questions rendered dynamically by renderQuiz() -->
+        </form>
+    </div>
+
+    <!-- Section 3: Score Result Panel (Hidden until submission) -->
+    <div id="result-panel" class="quiz-card" style="display:none; text-align: center;">
+        <div class="result-icon">🎯</div>
+        <h2 id="result-title">Quiz Completed!</h2>
+        <p id="result-detail" style="font-size: 1.2rem; font-weight: bold;"></p>
+        <br>
+        <button type="button" class="btn-submit" onclick="goTo('Student.html')">
+            Attempt Another Quiz
+        </button>
+    </div>
+
+    <br>
+    <button type="button" id="back-btn" class="btn-back" onclick="goTo('index.html')">
+        ← Back to Home
+    </button>
+
+</div>
+
+<script src="js/app.js"></script>
+<script>
+    // Initialize the page by fetching quizzes from Spring Boot
+    window.onload = function() {
+        // Display student name from session
+        const name = sessionStorage.getItem('studentName');
+        const id = sessionStorage.getItem('studentId');
+        if (name) {
+            document.getElementById('student-name-label').textContent = `👤 ${name} (${id})`;
+        }
+
+        // Call the bridge function to load quizzes from API
+        initStudentDashboard();
+    };
+</script>
+
+</body>
+</html>

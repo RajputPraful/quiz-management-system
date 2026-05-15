@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login — Amrita Quiz</title>
+    <link rel="stylesheet" href="css/codestyle.css">
+</head>
+<body>
+
+<div class="auth-container teacher-bg">
+    <div class="auth-box teacher-box">
+        <span class="auth-icon">👩‍🏫</span>
+        <h2>Teacher Login</h2>
+        <p class="subtitle">Enter your credentials to manage quizzes.</p>
+
+        <form id="teacher-login-form" onsubmit="teacherLogin(event)">
+            <input type="text"
+                   id="teacher-name"
+                   placeholder="Teacher Name"
+                   autocomplete="name"
+                   required>
+            <input type="text"
+                   id="teacher-id"
+                   placeholder="Teacher ID"
+                   autocomplete="off"
+                   required>
+            <!-- Added password field to match backend requirements -->
+            <input type="password"
+                   id="teacher-password"
+                   placeholder="Password"
+                   required>
+
+            <div class="error-msg" id="login-error" style="display:none;">
+                ❌ Invalid Teacher ID or Password.
+            </div>
+
+            <button type="submit" class="btn-teacher-login">Login →</button>
+        </form>
+
+        <button class="back-link teacher-link"
+                type="button"
+                onclick="goTo('QuizLogin.html')">
+            ← Back to Role Selection
+        </button>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

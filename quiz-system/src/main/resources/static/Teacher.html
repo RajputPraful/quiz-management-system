@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard — Amrita Quiz</title>
+    <link rel="stylesheet" href="css/codestyle.css">
+</head>
+<body>
+
+<!-- ── Sticky Header ── -->
+<header class="dashboard-header">
+    <div class="header-left">
+        <h2>
+            Teacher Panel
+            <span id="q-count-badge" class="question-count-badge">0 Questions</span>
+        </h2>
+    </div>
+    <div class="header-right">
+        <!-- Populated via initTeacherPage() -->
+        <span id="teacher-id-label" class="header-user-label"></span>
+        <button type="button" class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+</header>
+
+<!-- ── Main Content ── -->
+<div class="dashboard-container">
+
+    <!-- CRITICAL: Added Quiz Title input to match Backend Entity -->
+    <div class="quiz-title-section">
+        <input type="text"
+               id="quiz-title"
+               placeholder="Enter Quiz Title (e.g. Java OOP Quiz 1)"
+               class="main-title-input"
+               required>
+    </div>
+
+    <!-- Updated to use publishQuiz(event) from the bridge app.js -->
+    <form id="quiz-form" onsubmit="publishQuiz(event)">
+
+        <!-- Question cards injected here by app.js -->
+        <div id="questions-wrapper"></div>
+
+        <!-- Add / Submit row -->
+        <div class="form-actions">
+            <button type="button"
+                    class="btn-add-question"
+                    onclick="addQuestion()">
+                + Add Question
+            </button>
+            <button type="submit" class="btn-submit">
+                ✓ Publish Quiz to Database
+            </button>
+        </div>
+
+    </form>
+
+    <br>
+    <button type="button"
+            class="btn-back"
+            onclick="goTo('index.html')">
+        ← Back to Home
+    </button>
+
+</div>
+
+<script src="js/app.js"></script>
+<script>
+    // Initialize the teacher view
+    window.onload = function() {
+        // Display teacher name from sessionStorage
+        const name = sessionStorage.getItem('teacherName');
+        const id = sessionStorage.getItem('teacherId');
+        if (name) {
+            document.getElementById('teacher-id-label').textContent = `👤 ${name} (${id})`;
+        }
+
+        // Start with one blank question
+        addQuestion();
+    };
+</script>
+
+</body>
+</html>
